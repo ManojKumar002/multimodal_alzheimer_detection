@@ -1,0 +1,4 @@
+*.pkl
+*.hdf5
+*_train/
+__pycache__
