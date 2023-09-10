@@ -14,22 +14,22 @@ f1 = []
 precision = []
 recall = []
 
-with open("images_train/img_train.pkl", "rb") as fh:
+
+with open("pet_train/pet_train.pkl", "rb") as fh:
     data = pickle.load(fh)
 X_train_ = pd.DataFrame(data)["img_array"] 
 
-with open("images_train/img_test.pkl", "rb") as fh:
+with open("pet_train/pet_test.pkl", "rb") as fh:
     data = pickle.load(fh)
 X_test_ = pd.DataFrame(data)["img_array"]
 
-with open("images_train/img_y_train.pkl", "rb") as fh:
+with open("pet_train/pet_y_train.pkl", "rb") as fh:
     data = pickle.load(fh)
 y_train = np.array(pd.DataFrame(data)["label"].values.astype(np.float32)).flatten()
 
-with open("images_train/img_y_test.pkl", "rb") as fh:
+with open("pet_train/pet_y_test.pkl", "rb") as fh:
     data = pickle.load(fh)
-y_test = np.array(pd.DataFrame(data)["label"].values.astype(np.float32)).flatten()
-
+y_test = np.array(pd.DataFrame(data)["label"].values.astype(np.float32)).flatten()   
 
 y_test[y_test == 2] = -1
 y_test[y_test == 1] = 2
@@ -38,7 +38,6 @@ y_test[y_test == -1] = 1
 y_train[y_train == 2] = -1
 y_train[y_train == 1] = 2
 y_train[y_train == -1] = 1
-
 
 
 X_train = []
@@ -65,14 +64,13 @@ X_test= X_test.reshape(-1,72,72,3)
 #modified shape (205,72, 72, 3)
 
 
-model =load_model("./saved_models/train_images_model_base.hdf5")
+model =load_model("./saved_models/train_pet_model_base.hdf5")
 score = model.evaluate(X_test, y_test, verbose=0)
 print(f'Test loss: {score[0]} / Test accuracy: {score[1]}')
 acc.append(score[1])
 
 test_predictions = model.predict(X_test)
 test_label = to_categorical(y_test,3)
-
 true_label= np.argmax(test_label, axis =1)
 
 predicted_label= np.argmax(test_predictions, axis =1)

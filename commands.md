@@ -36,19 +36,3 @@ SUB:[`tensorflow.python.framework.errors_impl.NotFoundError`]
     file path is incorrect,as there was some space in folder name
 
 
-
-#############
-No of patints
-#############
-
-mri 331
-
-
-
-
-x_train
-10234 rows × 19757 columns
-
-x_test
-4387 rows × 19757 columns
-

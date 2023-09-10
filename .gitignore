@@ -2,3 +2,5 @@
 *.hdf5
 *_train/
 __pycache__
+*.md
+*.docx

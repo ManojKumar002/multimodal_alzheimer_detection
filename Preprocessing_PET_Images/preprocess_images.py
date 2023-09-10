@@ -62,7 +62,6 @@ def create_dataset(meta, meta_all,path_to_datadir):
             
 
     meta_all.to_pickle("pet_meta.pkl")
-    time.sleep(0.5)
 
 
 

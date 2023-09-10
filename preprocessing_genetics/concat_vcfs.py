@@ -4,13 +4,10 @@ import numpy as np
 import pandas as pd
 cnt=1
 
-### Working File ###
 
 def main():
     files = os.listdir("pickle_files")
-    diag = pd.read_csv("ground_truth.csv")[["Subject", "Group"]]
-    # diag = pd.read_csv("YOUR_PATH_TO_DIAGNOSIS_TABLE")[["index", "Group"]]  changed the subject to index
-    
+    diag = pd.read_csv("ground_truth.csv")[["Subject", "Group"]]    
     diag = diag.rename(columns={"Subject": "index"})
     
     vcfs = []
@@ -42,12 +39,8 @@ def main():
                 output_file = open('log_clean.txt','a')
                 output_file.write("Percent done: " + str((idx/len(cols))*100) + "\n" + vcf_file + "\n")
                 output_file.close()
-
-        # print("adding to clean pickle")
-        # merged.to_pickle("clean_pickle_file/" + vcf_file + "clean.pkl")
         
         
-        # since vcf do not have the group column we are using the merged list which have the column group
         vcf = merged.groupby('subject', group_keys=False).apply(lambda x: x.loc[x.Group.idxmax()])
         print("adding to vcf ")
         vcfs.append(vcf)

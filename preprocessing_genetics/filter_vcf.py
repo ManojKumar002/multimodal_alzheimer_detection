@@ -4,7 +4,6 @@ import numpy as np
 import pandas as pd
 import gzip
 
-### Working File ###
 
 def get_vcf_names(vcf_path):
     with open(vcf_path, "rt") as ifile:

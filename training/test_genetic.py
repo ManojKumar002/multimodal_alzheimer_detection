@@ -19,7 +19,7 @@ f1 = []
 precision = []
 recall = []
 
-model =load_model("./train_genetic_model.hdf5")
+model =load_model("./saved_models/train_genetic_model.hdf5")
 
 score = model.evaluate(X_test, y_test, verbose=0)
 print(f'Test loss: {score[0]} / Test accuracy: {score[1]}')
